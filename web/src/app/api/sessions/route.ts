@@ -13,7 +13,7 @@ export const GET = async () => {
 
   const sessions = await prisma.activitySession.findMany({
     orderBy: { createdAt: "desc" },
-    include: { outcomeChecks: true },
+    include: { outcomeChecks: { orderBy: { dueAt: "asc" } } },
   });
 
   return NextResponse.json({ sessions });

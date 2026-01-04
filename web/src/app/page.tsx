@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { SessionComposer } from "@/components/session-composer";
+import { CheckPanel } from "@/components/check-panel";
 import { SessionLibrary } from "@/components/session-library";
 import { getDashboardData } from "@/lib/dashboard-data";
 import { objectiveConfig } from "@/lib/objective-config";
@@ -168,50 +169,9 @@ export default async function Home() {
               <h2>Detail check</h2>
               <p>Suivi d'un outcome et apprentissage Stop/Start/Continue.</p>
             </div>
-            <span className="pill">J+7</span>
+            <span className="pill">Edition</span>
           </div>
-          <div className="check-grid">
-            <div className="check-card">
-              <h4>Outcome level</h4>
-              <div className="outcome-levels">
-                <button className="chip">None</button>
-                <button className="chip">Low</button>
-                <button className="chip is-active">Med</button>
-                <button className="chip">High</button>
-              </div>
-              <div className="metric-row">
-                <input placeholder="Metric value (ex: 28)" />
-                <button className="btn ghost">Ajouter note</button>
-              </div>
-            </div>
-            <div className="check-card note">
-              <h4>Notes + apprentissages</h4>
-              <p>Le contenu a declenche des clics, mais le CTA etait trop discret.</p>
-              <div className="decision-badges">
-                <span>Stop: posts generiques</span>
-                <span>Start: CTA direct sur RDV</span>
-                <span>Continue: format editorial court</span>
-              </div>
-            </div>
-            <div className="check-card timeline-mini">
-              <h4>Historique</h4>
-              <div className="mini-row">
-                <span>J+2</span>
-                <strong>Low</strong>
-                <em>Impressions 1.8k</em>
-              </div>
-              <div className="mini-row">
-                <span>J+7</span>
-                <strong>Med</strong>
-                <em>Clics 42</em>
-              </div>
-              <div className="mini-row">
-                <span>J+30</span>
-                <strong>--</strong>
-                <em>En attente</em>
-              </div>
-            </div>
-          </div>
+          <CheckPanel />
         </section>
       </main>
     </>
