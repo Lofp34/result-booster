@@ -481,6 +481,28 @@ textarea {
   margin-bottom: 12px;
 }
 
+.weekly-meta {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.outcome-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(26, 23, 20, 0.1);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.outcome-pill.soft {
+  background: rgba(31, 77, 58, 0.12);
+  color: var(--accent-a);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
 .decisions {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -533,8 +555,28 @@ textarea {
   padding: 12px;
   border-radius: 12px;
   background: rgba(26, 23, 20, 0.04);
-  white-space: pre-wrap;
   font-family: var(--font-body), sans-serif;
+}
+
+.ai-output h3,
+.ai-output h4 {
+  margin: 14px 0 6px;
+}
+
+.ai-output p {
+  margin: 8px 0;
+}
+
+.ai-output ul,
+.ai-output ol {
+  margin: 8px 0 8px 20px;
+}
+
+.ai-output code {
+  background: rgba(26, 23, 20, 0.08);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9rem;
 }
 
 .score-chip {

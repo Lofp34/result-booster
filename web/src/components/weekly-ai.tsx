@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { SessionSummary, WeeklySummary } from "@/lib/dashboard-data";
 
 type Props = {
@@ -66,7 +68,11 @@ export const WeeklyAI = ({ weekly, sessions }: Props) => {
       </div>
       {status.type === "loading" ? <p className="ai-status">{status.message}</p> : null}
       {status.type === "error" ? <p className="ai-status error">{status.message}</p> : null}
-      {text ? <pre className="ai-output">{text}</pre> : null}
+      {text ? (
+        <div className="ai-output">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
+        </div>
+      ) : null}
     </div>
   );
 };
