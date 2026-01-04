@@ -354,6 +354,24 @@ textarea {
   margin-top: 18px;
 }
 
+.form-status {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: var(--border);
+  font-size: 0.9rem;
+}
+
+.form-status.success {
+  background: rgba(31, 77, 58, 0.12);
+  color: var(--accent-a);
+}
+
+.form-status.error {
+  background: rgba(228, 87, 46, 0.12);
+  color: var(--accent-hot);
+}
+
 .btn {
   border-radius: 999px;
   border: none;

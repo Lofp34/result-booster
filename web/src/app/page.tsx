@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { ObjectiveSelector } from "@/components/objective-selector";
+import { SessionComposer } from "@/components/session-composer";
 import { SessionLibrary } from "@/components/session-library";
 import { getDashboardData } from "@/lib/dashboard-data";
 import { objectiveConfig } from "@/lib/objective-config";
@@ -51,54 +51,7 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="session-grid">
-            <div className="session-card">
-              <div className="session-meta">
-                <div>
-                  <label>Action realisee</label>
-                  <input placeholder="Ex: Redaction post LinkedIn ICP" />
-                </div>
-                <div>
-                  <label>Intention</label>
-                  <textarea rows={3} placeholder="Objectif business, cible, angle..." />
-                </div>
-                <div className="time-row">
-                  <div>
-                    <label>Duree</label>
-                    <input value="02:40" readOnly />
-                  </div>
-                  <div>
-                    <label>Date</label>
-                    <input value="04 Jan 2026" readOnly />
-                  </div>
-                </div>
-              </div>
-
-              <ObjectiveSelector metrics={objectiveConfig.metrics} />
-            </div>
-
-            <div className="session-card accent">
-              <h3>Prochaines actions (auto)</h3>
-              <p>Generees selon ton objectif principal.</p>
-              <div className="next-steps">
-                {data.nextSteps.map((step) => (
-                  <div className="next-step" key={step.metricKey}>
-                    <span className={`badge ${step.metricKey === "meetings" ? "a" : "b"}`}>
-                      {step.metricKey === "meetings" ? "A" : "B"}
-                    </span>
-                    <div>
-                      <strong>{step.label}</strong>
-                      <p>Signal de conversion vers le niveau superieur.</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="cta-row">
-                <button className="btn">Enregistrer</button>
-                <button className="btn ghost">Exporter notes</button>
-              </div>
-            </div>
-          </div>
+          <SessionComposer metrics={objectiveConfig.metrics} />
         </section>
 
         <section className="panel timeline animate" style={{ "--delay": "0.18s" } as CSSProperties}>

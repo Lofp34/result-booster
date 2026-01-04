@@ -1,10 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ObjectiveMetric } from "@/lib/objective-config";
 
 type Props = {
   metrics: ObjectiveMetric[];
+  onChange?: (selection: { primaryKey: string | null; secondaryKeys: string[] }) => void;
+  resetToken?: number;
 };
 
 const levels = [
@@ -13,7 +15,7 @@ const levels = [
   { key: "C", label: "C - Vanite" },
 ] as const;
 
-export const ObjectiveSelector = ({ metrics }: Props) => {
+export const ObjectiveSelector = ({ metrics, onChange, resetToken }: Props) => {
   const [primaryKey, setPrimaryKey] = useState<string | null>(null);
   const [secondaryKeys, setSecondaryKeys] = useState<string[]>([]);
   const [secondaryMode, setSecondaryMode] = useState(false);
@@ -50,6 +52,18 @@ export const ObjectiveSelector = ({ metrics }: Props) => {
     setPrimaryKey(null);
     setSecondaryKeys([]);
   };
+
+  useEffect(() => {
+    if (typeof resetToken === "number") {
+      setPrimaryKey(null);
+      setSecondaryKeys([]);
+      setSecondaryMode(false);
+    }
+  }, [resetToken]);
+
+  useEffect(() => {
+    onChange?.({ primaryKey, secondaryKeys });
+  }, [onChange, primaryKey, secondaryKeys]);
 
   return (
     <div className="ladder">
