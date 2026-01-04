@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { SessionComposer } from "@/components/session-composer";
 import { CheckPanel } from "@/components/check-panel";
 import { SessionLibrary } from "@/components/session-library";
+import { WeeklyAI } from "@/components/weekly-ai";
 import { getDashboardData } from "@/lib/dashboard-data";
 import { objectiveConfig } from "@/lib/objective-config";
 
@@ -147,6 +148,8 @@ export default async function Home() {
               <p>{data.weekly.decisions.continue}</p>
             </div>
           </div>
+
+          <WeeklyAI weekly={data.weekly} sessions={data.sessions} />
         </section>
 
         <section className="panel library animate" style={{ "--delay": "0.4s" } as CSSProperties}>

@@ -495,6 +495,48 @@ textarea {
   border: var(--border);
 }
 
+.ai-panel {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 16px;
+  border: var(--border);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.ai-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.ai-header h4 {
+  margin: 0 0 4px;
+}
+
+.ai-header p {
+  margin: 0;
+  color: rgba(26, 23, 20, 0.6);
+}
+
+.ai-status {
+  margin-top: 12px;
+  color: rgba(26, 23, 20, 0.7);
+}
+
+.ai-status.error {
+  color: var(--accent-hot);
+}
+
+.ai-output {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(26, 23, 20, 0.04);
+  white-space: pre-wrap;
+  font-family: var(--font-body), sans-serif;
+}
+
 .score-chip {
   padding: 10px 16px;
   border-radius: 18px;
