@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Time -> Impact | UI Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=IBM+Plex+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page" aria-hidden="true"></div>
+    <header class="top">
+      <div class="brand">
+        <span class="brand-mark">TI</span>
+        <div>
+          <h1>Time -> Impact</h1>
+          <p>Suivi du temps oriente resultats. Conversion C->B->A integree.</p>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="meta-item">
+          <span>Derniere session</span>
+          <strong>02h40</strong>
+        </div>
+        <div class="meta-item">
+          <span>Score / heure</span>
+          <strong>4.2</strong>
+        </div>
+        <button class="btn ghost">Nouvelle session</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel animate" style="--delay: 0.05s">
+        <div class="panel-header">
+          <div>
+            <h2>Cloture de session</h2>
+            <p>Selectionne un objectif principal, puis 0-2 secondaires.</p>
+          </div>
+          <div class="panel-actions">
+            <button id="secondary-toggle" class="btn">Mode secondaire</button>
+            <button id="clear-selection" class="btn ghost">Effacer</button>
+          </div>
+        </div>
+
+        <div class="session-grid">
+          <div class="session-card">
+            <div class="session-meta">
+              <div>
+                <label for="session-title">Action realisee</label>
+                <input
+                  id="session-title"
+                  type="text"
+                  placeholder="Ex: Redaction post LinkedIn ICP"
+                />
+              </div>
+              <div>
+                <label for="session-notes">Intention</label>
+                <textarea
+                  id="session-notes"
+                  rows="3"
+                  placeholder="Objectif business, cible, angle..."
+                ></textarea>
+              </div>
+              <div class="time-row">
+                <div>
+                  <label for="session-duration">Duree</label>
+                  <input id="session-duration" type="text" value="02:40" />
+                </div>
+                <div>
+                  <label for="session-date">Date</label>
+                  <input id="session-date" type="text" value="04 Jan 2026" />
+                </div>
+              </div>
+            </div>
+
+            <div class="ladder">
+              <div class="ladder-header">
+                <h3>Objective Ladder</h3>
+                <p>Choisis un resultat attendu.</p>
+              </div>
+              <div class="ladder-columns">
+                <div class="ladder-column">
+                  <div class="ladder-title">A - Business</div>
+                  <div class="chips">
+                    <button class="metric-chip" data-key="qualified_leads" data-label="Leads qualifies" data-level="A">Leads qualifies</button>
+                    <button class="metric-chip" data-key="meetings" data-label="RDV pris" data-level="A">RDV pris</button>
+                    <button class="metric-chip" data-key="proposals_sent" data-label="Propositions envoyees" data-level="A">Propositions envoyees</button>
+                    <button class="metric-chip" data-key="deals_signed" data-label="Deals signes" data-level="A">Deals signes</button>
+                    <button class="metric-chip" data-key="revenue_eur" data-label="CA (EUR)" data-level="A">CA (EUR)</button>
+                    <button class="metric-chip" data-key="renewals_upsell" data-label="Renouvellements" data-level="A">Renouvellements</button>
+                  </div>
+                </div>
+                <div class="ladder-column">
+                  <div class="ladder-title">B - Predictif</div>
+                  <div class="chips">
+                    <button class="metric-chip" data-key="dm_started" data-label="DM initie" data-level="B">DM initie</button>
+                    <button class="metric-chip" data-key="positive_replies" data-label="Reponses positives" data-level="B">Reponses positives</button>
+                    <button class="metric-chip" data-key="site_clicks" data-label="Clics site" data-level="B">Clics site</button>
+                    <button class="metric-chip" data-key="icp_followers" data-label="Abonnes ICP" data-level="B">Abonnes ICP</button>
+                  </div>
+                </div>
+                <div class="ladder-column">
+                  <div class="ladder-title">C - Vanite</div>
+                  <div class="chips">
+                    <button class="metric-chip" data-key="impressions" data-label="Impressions" data-level="C">Impressions</button>
+                    <button class="metric-chip" data-key="views" data-label="Vues" data-level="C">Vues</button>
+                    <button class="metric-chip" data-key="likes" data-label="Likes" data-level="C">Likes</button>
+                    <button class="metric-chip" data-key="comments" data-label="Commentaires" data-level="C">Commentaires</button>
+                  </div>
+                </div>
+              </div>
+              <div class="selection-summary">
+                <div>
+                  <span>Principal</span>
+                  <strong id="primary-choice">Aucun</strong>
+                </div>
+                <div>
+                  <span>Secondaires</span>
+                  <strong id="secondary-choice">Aucun</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="session-card accent">
+            <h3>Prochaines actions (auto)</h3>
+            <p>Generees selon ton objectif principal.</p>
+            <div class="next-steps">
+              <div class="next-step">
+                <span class="badge b">B</span>
+                <div>
+                  <strong>Initier 10 DM cibles</strong>
+                  <p>Transformer la visibilite en conversations.</p>
+                </div>
+              </div>
+              <div class="next-step">
+                <span class="badge b">B</span>
+                <div>
+                  <strong>Obtenir 3 reponses positives</strong>
+                  <p>Prioriser les ICP avec interet.</p>
+                </div>
+              </div>
+              <div class="next-step">
+                <span class="badge a">A</span>
+                <div>
+                  <strong>Planifier 1 RDV qualifie</strong>
+                  <p>Basculer vers le business concret.</p>
+                </div>
+              </div>
+            </div>
+            <div class="cta-row">
+              <button class="btn">Enregistrer</button>
+              <button class="btn ghost">Exporter notes</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel timeline animate" style="--delay: 0.18s">
+        <div class="panel-header">
+          <div>
+            <h2>Outcome checks</h2>
+            <p>Relances J+2 / J+7 / J+30 pour mesurer l'impact.</p>
+          </div>
+          <span class="pill">Auto-genere</span>
+        </div>
+        <div class="timeline-track">
+          <div class="timeline-item">
+            <div class="timeline-date">J+2</div>
+            <div class="timeline-card">
+              <h4>Verification rapide</h4>
+              <p>Impressions + reponses faibles ? Note un signal.</p>
+              <div class="outcome-levels">
+                <button class="chip">None</button>
+                <button class="chip">Low</button>
+                <button class="chip">Med</button>
+                <button class="chip">High</button>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">J+7</div>
+            <div class="timeline-card">
+              <h4>Impact tangible</h4>
+              <p>Ajoute une valeur si disponible.</p>
+              <div class="metric-row">
+                <input type="text" placeholder="Metric value" />
+                <button class="btn ghost">Ajouter note</button>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">J+30</div>
+            <div class="timeline-card">
+              <h4>Validation business</h4>
+              <p>Ce qui a vraiment bouge.</p>
+              <div class="metric-row">
+                <input type="text" placeholder="Outcome level" />
+                <button class="btn ghost">Marquer complete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel weekly animate" style="--delay: 0.3s">
+        <div class="panel-header">
+          <div>
+            <h2>Weekly review</h2>
+            <p>Funnel A/B/C + decisions Stop/Start/Continue.</p>
+          </div>
+          <div class="score-chip">
+            <span>Score global</span>
+            <strong>28.6</strong>
+          </div>
+        </div>
+
+        <div class="weekly-grid">
+          <div class="weekly-column">
+            <div class="weekly-header">
+              <span class="badge a">A</span>
+              <h3>Business</h3>
+            </div>
+            <div class="weekly-card">
+              <strong>Deals signes</strong>
+              <p>1 deal, 5.2 score/heure</p>
+            </div>
+            <div class="weekly-card">
+              <strong>RDV pris</strong>
+              <p>3 RDV qualifies, priorite top</p>
+            </div>
+          </div>
+          <div class="weekly-column">
+            <div class="weekly-header">
+              <span class="badge b">B</span>
+              <h3>Predictif</h3>
+            </div>
+            <div class="weekly-card">
+              <strong>DM initie</strong>
+              <p>12 DM, conversion 18%</p>
+            </div>
+            <div class="weekly-card">
+              <strong>Reponses positives</strong>
+              <p>4 reponses, pousser vers RDV</p>
+            </div>
+          </div>
+          <div class="weekly-column">
+            <div class="weekly-header">
+              <span class="badge c">C</span>
+              <h3>Vanite</h3>
+            </div>
+            <div class="weekly-card">
+              <strong>Impressions</strong>
+              <p>9.2k, mais peu de DM</p>
+            </div>
+            <div class="weekly-card">
+              <strong>Likes</strong>
+              <p>230, pas assez de clics</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="decisions">
+          <div class="decision-card">
+            <h4>Stop</h4>
+            <p>Posts generiques sans CTA direct.</p>
+          </div>
+          <div class="decision-card">
+            <h4>Start</h4>
+            <p>Serie d'outreach cible sur 15 comptes ICP.</p>
+          </div>
+          <div class="decision-card">
+            <h4>Continue</h4>
+            <p>Format editorial + case studies courts.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel library animate" style="--delay: 0.4s">
+        <div class="panel-header">
+          <div>
+            <h2>Bibliotheque de sessions</h2>
+            <p>Historique rapide, tri par niveau et impact.</p>
+          </div>
+          <div class="panel-actions">
+            <button class="btn ghost">Filtrer A/B/C</button>
+            <button class="btn ghost">Cette semaine</button>
+          </div>
+        </div>
+        <div class="library-grid">
+          <div class="session-list">
+            <div class="session-item is-active" data-session="post-icp">
+              <div>
+                <strong>Post LinkedIn ICP</strong>
+                <p>Objectif: Impressions -> DM initie</p>
+              </div>
+              <span class="badge c">C</span>
+            </div>
+            <div class="session-item" data-session="dm-outreach">
+              <div>
+                <strong>DM outreach cible</strong>
+                <p>Objectif: Reponses positives</p>
+              </div>
+              <span class="badge b">B</span>
+            </div>
+            <div class="session-item" data-session="call-proposal">
+              <div>
+                <strong>Call + proposition</strong>
+                <p>Objectif: Propositions envoyees</p>
+              </div>
+              <span class="badge a">A</span>
+            </div>
+            <div class="session-item" data-session="case-study">
+              <div>
+                <strong>Case study court</strong>
+                <p>Objectif: Leads qualifies</p>
+              </div>
+              <span class="badge a">A</span>
+            </div>
+          </div>
+          <div class="session-detail">
+            <div class="detail-header">
+              <div>
+                <h3 id="detail-title">Post LinkedIn ICP</h3>
+                <p id="detail-meta">02:40 • 04 Jan 2026 • Niveau C</p>
+              </div>
+              <span class="pill" id="detail-score">Score 1.4</span>
+            </div>
+            <div class="detail-body">
+              <div>
+                <span class="detail-label">Intention</span>
+                <p id="detail-intent">Creer un signal d'interet sur un angle revenu recurrent.</p>
+              </div>
+              <div>
+                <span class="detail-label">Next steps auto</span>
+                <ul id="detail-steps">
+                  <li>Initier 10 DM cibles</li>
+                  <li>Obtenir 3 reponses positives</li>
+                  <li>Planifier 1 RDV qualifie</li>
+                </ul>
+              </div>
+              <div class="detail-tags">
+                <span>Impressions</span>
+                <span>Views</span>
+                <span>Commentaires</span>
+              </div>
+            </div>
+            <div class="detail-actions">
+              <button class="btn">Ouvrir checks</button>
+              <button class="btn ghost">Dupliquer session</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel check-detail animate" style="--delay: 0.5s">
+        <div class="panel-header">
+          <div>
+            <h2>Detail check</h2>
+            <p>Suivi d'un outcome et apprentissage Stop/Start/Continue.</p>
+          </div>
+          <span class="pill">J+7</span>
+        </div>
+        <div class="check-grid">
+          <div class="check-card">
+            <h4>Outcome level</h4>
+            <div class="outcome-levels">
+              <button class="chip">None</button>
+              <button class="chip">Low</button>
+              <button class="chip is-active">Med</button>
+              <button class="chip">High</button>
+            </div>
+            <div class="metric-row">
+              <input type="text" placeholder="Metric value (ex: 28)" />
+              <button class="btn ghost">Ajouter note</button>
+            </div>
+          </div>
+          <div class="check-card note">
+            <h4>Notes + apprentissages</h4>
+            <p>Le contenu a declenche des clics, mais le CTA etait trop discret.</p>
+            <div class="decision-badges">
+              <span>Stop: posts generiques</span>
+              <span>Start: CTA direct sur RDV</span>
+              <span>Continue: format editorial court</span>
+            </div>
+          </div>
+          <div class="check-card timeline-mini">
+            <h4>Historique</h4>
+            <div class="mini-row">
+              <span>J+2</span>
+              <strong>Low</strong>
+              <em>Impressions 1.8k</em>
+            </div>
+            <div class="mini-row">
+              <span>J+7</span>
+              <strong>Med</strong>
+              <em>Clics 42</em>
+            </div>
+            <div class="mini-row">
+              <span>J+30</span>
+              <strong>--</strong>
+              <em>En attente</em>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

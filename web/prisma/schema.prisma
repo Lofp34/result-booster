@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum OutcomeLevel {
+  NONE
+  LOW
+  MED
+  HIGH
+}
+
+model UserSettings {
+  id                 String   @id @default(cuid())
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  objectiveConfigJson Json
+}
+
+model ActivitySession {
+  id                         String         @id @default(cuid())
+  createdAt                  DateTime       @default(now())
+  updatedAt                  DateTime       @updatedAt
+  title                      String
+  notes                      String?
+  durationMinutes            Int
+  expectedPrimaryMetricKey   String
+  expectedSecondaryMetricKeys String[]
+  outcomeChecks              OutcomeCheck[]
+}
+
+model OutcomeCheck {
+  id           String       @id @default(cuid())
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  sessionId    String
+  session      ActivitySession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  metricKey    String
+  checkWindowDays Int
+  dueAt        DateTime
+  outcomeLevel OutcomeLevel
+  metricValue  Float?
+  note         String?
+}
