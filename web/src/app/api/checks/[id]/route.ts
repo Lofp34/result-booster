@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { OutcomeLevel } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 
@@ -10,9 +10,10 @@ const parseOutcomeLevel = (value?: string) => {
 };
 
 export const PATCH = async (
-  request: Request,
-  { params }: { params: { id: string } },
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> },
 ) => {
+  const { id } = await context.params;
   if (!process.env.DATABASE_URL) {
     return NextResponse.json(
       { error: "DATABASE_URL not set. Connect a database to update checks." },
@@ -29,7 +30,7 @@ export const PATCH = async (
   }
 
   const check = await prisma.outcomeCheck.update({
-    where: { id: params.id },
+    where: { id },
     data: {
       outcomeLevel: parsedLevel,
       metricValue: metricValue ?? null,
