@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import { SessionComposer } from "@/components/session-composer";
 import { CheckPanel } from "@/components/check-panel";
+import { OutcomeChecksTimeline } from "@/components/outcome-checks";
 import { SessionLibrary } from "@/components/session-library";
 import { WeeklyAI } from "@/components/weekly-ai";
 import { getDashboardData } from "@/lib/dashboard-data";
@@ -64,43 +65,7 @@ export default async function Home() {
             </div>
             <span className="pill">Auto-genere</span>
           </div>
-          <div className="timeline-track">
-            <div className="timeline-item">
-              <div className="timeline-date">J+2</div>
-              <div className="timeline-card">
-                <h4>Verification rapide</h4>
-                <p>Impressions + reponses faibles ? Note un signal.</p>
-                <div className="outcome-levels">
-                  <button className="chip">None</button>
-                  <button className="chip">Low</button>
-                  <button className="chip">Med</button>
-                  <button className="chip">High</button>
-                </div>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-date">J+7</div>
-              <div className="timeline-card">
-                <h4>Impact tangible</h4>
-                <p>Ajoute une valeur si disponible.</p>
-                <div className="metric-row">
-                  <input placeholder="Metric value" />
-                  <button className="btn ghost">Ajouter note</button>
-                </div>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-date">J+30</div>
-              <div className="timeline-card">
-                <h4>Validation business</h4>
-                <p>Ce qui a vraiment bouge.</p>
-                <div className="metric-row">
-                  <input placeholder="Outcome level" />
-                  <button className="btn ghost">Marquer complete</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <OutcomeChecksTimeline />
         </section>
 
         <section className="panel weekly animate" style={{ "--delay": "0.3s" } as CSSProperties}>
@@ -128,6 +93,12 @@ export default async function Home() {
                     <p>
                       {session.scorePerHour} score/h • {session.durationMinutes} min
                     </p>
+                    <div className="weekly-meta">
+                      <span className="outcome-pill">{session.outcomeLevel}</span>
+                      {session.metricValue ? (
+                        <span className="outcome-pill soft">{session.metricValue}</span>
+                      ) : null}
+                    </div>
                   </div>
                 ))}
               </div>

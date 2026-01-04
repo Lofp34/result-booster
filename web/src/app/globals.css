@@ -449,7 +449,18 @@ textarea {
   margin-top: 12px;
 }
 
+.timeline-card .metric-row input {
+  flex: 1 1 140px;
+}
+
 .check-panel select {
+  border-radius: 12px;
+  border: 1px solid rgba(26, 23, 20, 0.25);
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.timeline select {
   border-radius: 12px;
   border: 1px solid rgba(26, 23, 20, 0.25);
   padding: 8px 12px;
