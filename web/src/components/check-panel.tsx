@@ -156,7 +156,7 @@ export const CheckPanel = () => {
                       })),
                     );
                   }}
-                  placeholder="Metric value"
+                  placeholder="Valeur metrique"
                 />
                 <input
                   value={check.note ?? ""}
@@ -170,7 +170,7 @@ export const CheckPanel = () => {
                       })),
                     );
                   }}
-                  placeholder="Note"
+                  placeholder="Note / apprentissage"
                 />
                 <button
                   type="button"

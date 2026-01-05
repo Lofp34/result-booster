@@ -15,6 +15,7 @@ Construire une V1 de suivi du temps oriente impact, avec objectifs A/B/C, checks
 - Recommandations IA visibles dans la Weekly Review (via /api/gemini).
 - Weekly Review affiche outcome level et metric value par session.
 - Zone Outcome checks connectee aux checks reels (edition inline).
+- Libelles clarifies (mode secondaire, metriques, vues timeline/edition).
 
 ## Decisions prises
 - UI prototype statique en HTML/CSS/JS, design editorial et contraste eleve.
@@ -38,3 +39,4 @@ Construire une V1 de suivi du temps oriente impact, avec objectifs A/B/C, checks
 - 2026-01-04: Ajout widget IA Weekly Review (appel /api/gemini).
 - 2026-01-04: Weekly Review enrichie avec outcome level et metric value.
 - 2026-01-04: Branchements Outcome checks (timeline) sur data live.
+- 2026-01-04: Clarification labels UX (Outcome checks + objectifs secondaires).

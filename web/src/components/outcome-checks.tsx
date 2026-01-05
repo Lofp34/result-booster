@@ -182,12 +182,12 @@ export const OutcomeChecksTimeline = () => {
                     <input
                       value={draft.metricValue}
                       onChange={(event) => updateDraft(check, { metricValue: event.target.value })}
-                      placeholder="Metric value"
+                      placeholder="Valeur metrique"
                     />
                     <input
                       value={draft.note}
                       onChange={(event) => updateDraft(check, { note: event.target.value })}
-                      placeholder="Note"
+                      placeholder="Note / apprentissage"
                     />
                     <button type="button" className="btn ghost" onClick={() => saveCheck(check)}>
                       Sauver

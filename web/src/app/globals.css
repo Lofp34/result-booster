@@ -227,6 +227,12 @@ textarea {
   margin: 0 0 6px;
 }
 
+.ladder-help {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: rgba(26, 23, 20, 0.6);
+}
+
 .ladder-columns {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

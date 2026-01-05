@@ -70,6 +70,7 @@ export const ObjectiveSelector = ({ metrics, onChange, resetToken }: Props) => {
       <div className="ladder-header">
         <h3>Objective Ladder</h3>
         <p>Choisis un resultat attendu.</p>
+        <p className="ladder-help">A = Business, B = Predictif, C = Vanite</p>
       </div>
       <div className="panel-actions" style={{ marginBottom: "12px" }}>
         <button
@@ -77,7 +78,7 @@ export const ObjectiveSelector = ({ metrics, onChange, resetToken }: Props) => {
           className={secondaryMode ? "btn" : "btn ghost"}
           onClick={toggleSecondary}
         >
-          {secondaryMode ? "Secondaire actif" : "Mode secondaire"}
+          {secondaryMode ? "Secondaires actifs" : "Ajouter objectifs secondaires"}
         </button>
         <button type="button" className="btn ghost" onClick={clear}>
           Effacer

@@ -60,8 +60,10 @@ export default async function Home() {
         <section className="panel timeline animate" style={{ "--delay": "0.18s" } as CSSProperties}>
           <div className="panel-header">
             <div>
-              <h2>Outcome checks</h2>
-              <p>Relances J+2 / J+7 / J+30 pour mesurer l'impact.</p>
+              <h2>Outcome checks — Vue timeline</h2>
+              <p>
+                Fenetres generees selon la metrique principale (ex: impressions = J+2/J+7).
+              </p>
             </div>
             <span className="pill">Auto-genere</span>
           </div>
@@ -140,8 +142,8 @@ export default async function Home() {
         <section className="panel check-detail animate" style={{ "--delay": "0.5s" } as CSSProperties}>
           <div className="panel-header">
             <div>
-              <h2>Detail check</h2>
-              <p>Suivi d'un outcome et apprentissage Stop/Start/Continue.</p>
+              <h2>Outcome checks — Vue edition</h2>
+              <p>Edition rapide des checks (niveau, valeur, note).</p>
             </div>
             <span className="pill">Edition</span>
           </div>

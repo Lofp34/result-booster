@@ -106,11 +106,11 @@ export const SessionComposer = ({ metrics }: Props) => {
             />
           </div>
           <div>
-            <label htmlFor="session-notes">Intention</label>
+            <label htmlFor="session-notes">Objectif business</label>
             <textarea
               id="session-notes"
               rows={3}
-              placeholder="Objectif business, cible, angle..."
+              placeholder="Resultat attendu, cible, angle..."
               value={notes}
               onChange={(event) => setNotes(event.target.value)}
             />
