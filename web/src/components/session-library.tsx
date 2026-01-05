@@ -16,10 +16,34 @@ const formatDate = (date: string) =>
 
 export const SessionLibrary = ({ sessions }: Props) => {
   const [activeId, setActiveId] = useState(sessions[0]?.id);
+  const [levelFilter, setLevelFilter] = useState<"ALL" | "A" | "B" | "C">("ALL");
+  const [dateFilter, setDateFilter] = useState<"ALL" | "7D" | "30D">("ALL");
+  const [minScore, setMinScore] = useState("");
+
+  const filteredSessions = useMemo(() => {
+    const now = new Date();
+    return sessions.filter((session) => {
+      if (levelFilter !== "ALL" && session.primaryLevel !== levelFilter) return false;
+
+      if (dateFilter !== "ALL") {
+        const days = dateFilter === "7D" ? 7 : 30;
+        const cutoff = new Date(now);
+        cutoff.setDate(now.getDate() - days);
+        if (new Date(session.createdAt) < cutoff) return false;
+      }
+
+      if (minScore) {
+        const min = Number(minScore);
+        if (!Number.isNaN(min) && session.scorePerHour < min) return false;
+      }
+
+      return true;
+    });
+  }, [sessions, levelFilter, dateFilter, minScore]);
 
   const active = useMemo(
-    () => sessions.find((session) => session.id === activeId) ?? sessions[0],
-    [activeId, sessions],
+    () => filteredSessions.find((session) => session.id === activeId) ?? filteredSessions[0],
+    [activeId, filteredSessions],
   );
 
   const metric = active ? findMetric(active.primaryMetricKey) : null;
@@ -27,8 +51,44 @@ export const SessionLibrary = ({ sessions }: Props) => {
 
   return (
     <div className="library-grid">
+      <div className="library-filters">
+        <div>
+          <label htmlFor="filter-level">Niveau</label>
+          <select
+            id="filter-level"
+            value={levelFilter}
+            onChange={(event) => setLevelFilter(event.target.value as "ALL" | "A" | "B" | "C")}
+          >
+            <option value="ALL">Tous</option>
+            <option value="A">A - Business</option>
+            <option value="B">B - Predictif</option>
+            <option value="C">C - Vanite</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="filter-date">Periode</label>
+          <select
+            id="filter-date"
+            value={dateFilter}
+            onChange={(event) => setDateFilter(event.target.value as "ALL" | "7D" | "30D")}
+          >
+            <option value="ALL">Toute</option>
+            <option value="7D">7 jours</option>
+            <option value="30D">30 jours</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="filter-score">Score/h min</label>
+          <input
+            id="filter-score"
+            value={minScore}
+            onChange={(event) => setMinScore(event.target.value)}
+            placeholder="Ex: 2.5"
+          />
+        </div>
+      </div>
       <div className="session-list">
-        {sessions.map((session) => (
+        {filteredSessions.map((session) => (
           <button
             type="button"
             key={session.id}
@@ -47,6 +107,7 @@ export const SessionLibrary = ({ sessions }: Props) => {
             </span>
           </button>
         ))}
+        {filteredSessions.length === 0 ? <p>Aucune session sur ce filtre.</p> : null}
       </div>
       {active ? (
         <div className="session-detail">

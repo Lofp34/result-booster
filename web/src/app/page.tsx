@@ -131,10 +131,6 @@ export default async function Home() {
               <h2>Bibliotheque de sessions</h2>
               <p>Historique rapide, tri par niveau et impact.</p>
             </div>
-            <div className="panel-actions">
-              <button className="btn ghost">Filtrer A/B/C</button>
-              <button className="btn ghost">Cette semaine</button>
-            </div>
           </div>
           <SessionLibrary sessions={data.sessions} />
         </section>

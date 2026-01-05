@@ -622,6 +622,32 @@ textarea {
   gap: 18px;
 }
 
+.library-filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 6px;
+}
+
+.library-filters label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(26, 23, 20, 0.6);
+  margin-bottom: 6px;
+}
+
+.library-filters select,
+.library-filters input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(26, 23, 20, 0.2);
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
 .session-list {
   display: grid;
   gap: 12px;
@@ -790,6 +816,10 @@ textarea {
   .library-grid,
   .check-grid,
   .decisions {
+    grid-template-columns: 1fr;
+  }
+
+  .library-filters {
     grid-template-columns: 1fr;
   }
 }

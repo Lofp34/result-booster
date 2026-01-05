@@ -16,6 +16,7 @@ Construire une V1 de suivi du temps oriente impact, avec objectifs A/B/C, checks
 - Weekly Review affiche outcome level et metric value par session.
 - Zone Outcome checks connectee aux checks reels (edition inline).
 - Libelles clarifies (mode secondaire, metriques, vues timeline/edition).
+- Bibliotheque avec filtres (niveau, periode, score/h).
 
 ## Decisions prises
 - UI prototype statique en HTML/CSS/JS, design editorial et contraste eleve.
@@ -26,9 +27,9 @@ Construire une V1 de suivi du temps oriente impact, avec objectifs A/B/C, checks
 - Migrations Prisma creees sans DB locale (a appliquer lors du branchement Neon).
 
 ## Prochaine etape (proposee)
-1) Ajouter un filtre date/level sur la bibliotheque de sessions.
-2) Ajouter une page historique hebdo (comparatif semaine).
-3) Ajouter un tableau de bord synthese (top actions + tendances).
+1) Ajouter une page historique hebdo (comparatif semaine).
+2) Ajouter un tableau de bord synthese (top actions + tendances).
+3) Ajouter des tooltips definissant B/C et scoring.
 
 ## Journal des evolutions
 - 2026-01-04: Creation du document de statut et prototype UI initial.
@@ -40,3 +41,4 @@ Construire une V1 de suivi du temps oriente impact, avec objectifs A/B/C, checks
 - 2026-01-04: Weekly Review enrichie avec outcome level et metric value.
 - 2026-01-04: Branchements Outcome checks (timeline) sur data live.
 - 2026-01-04: Clarification labels UX (Outcome checks + objectifs secondaires).
+- 2026-01-04: Filtres bibliotheque (niveau, periode, score/h).
