@@ -498,6 +498,73 @@ textarea {
   margin-bottom: 12px;
 }
 
+.weekly-history {
+  display: grid;
+  gap: 16px;
+}
+
+.weekly-history-card {
+  padding: 18px;
+  border-radius: 16px;
+  border: var(--border);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.weekly-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.weekly-history-header h4 {
+  margin: 0 0 4px;
+}
+
+.weekly-history-body {
+  display: grid;
+  grid-template-columns: minmax(0, 0.6fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.weekly-history-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.weekly-history-metrics div {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: var(--border);
+  background: rgba(26, 23, 20, 0.05);
+  text-align: center;
+}
+
+.weekly-history-metrics span {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(26, 23, 20, 0.6);
+}
+
+.weekly-history-metrics strong {
+  display: block;
+  font-size: 1.2rem;
+}
+
+.weekly-history-top ul {
+  margin: 8px 0 0 18px;
+}
+
+@media (max-width: 1100px) {
+  .weekly-history-body {
+    grid-template-columns: 1fr;
+  }
+}
+
 .weekly-meta {
   display: flex;
   gap: 8px;

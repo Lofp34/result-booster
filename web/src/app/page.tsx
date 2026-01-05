@@ -4,6 +4,7 @@ import { CheckPanel } from "@/components/check-panel";
 import { OutcomeChecksTimeline } from "@/components/outcome-checks";
 import { SessionLibrary } from "@/components/session-library";
 import { WeeklyAI } from "@/components/weekly-ai";
+import { WeeklyHistory } from "@/components/weekly-history";
 import { getDashboardData } from "@/lib/dashboard-data";
 import { objectiveConfig } from "@/lib/objective-config";
 
@@ -123,6 +124,17 @@ export default async function Home() {
           </div>
 
           <WeeklyAI weekly={data.weekly} sessions={data.sessions} />
+        </section>
+
+        <section className="panel weekly-history-panel animate" style={{ "--delay": "0.36s" } as CSSProperties}>
+          <div className="panel-header">
+            <div>
+              <h2>Historique hebdo</h2>
+              <p>Comparatif semaine par semaine (score + niveaux).</p>
+            </div>
+            <span className="pill">Tendance</span>
+          </div>
+          <WeeklyHistory sessions={data.sessions} />
         </section>
 
         <section className="panel library animate" style={{ "--delay": "0.4s" } as CSSProperties}>
